@@ -2,22 +2,23 @@ n=2
 h=0
 t=0
 flips=1
-
+for((i=0; i<20; i++))
+do
       coin=$((RANDOM%2))
 
         if [[ $coin -eq 1 ]]
         then
-        h=$h+1
-        hcount+=1
+        h=$(($h+1))
+	echo "Heads"        
         else
-        t=$t+1
+        ((t++))
         tcount+=1
+	echo "Tails"
         fi
         flips+=1
+done
 
-if [[ $hcount -eq 1 ]]
-then
-        echo " Heads  "
-else
-        echo " Tails "
-fi
+
+echo "Head won $h times."
+echo "Tail won $t times."
+
