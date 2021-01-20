@@ -2,7 +2,7 @@ n=2
 h=0
 t=0
 flips=1
-for((i=0; i<20; i++))
+while [[ $h -lt 21 && $t -lt 21 ]]
 do
       coin=$((RANDOM%2))
 
@@ -15,10 +15,21 @@ do
         tcount+=1
 	echo "Tails"
         fi
-        flips+=1
+        ((flips++))
 done
 
+if [[ $h -eq 21 ]]
+then
+   diff=$(($h-$t))
+	echo "head $h tail $t"
+   echo "Head won by $diff score."
+elif [[ $t -eq 21 ]]
+then
+   diff=$(($t-$h))
+  echo "head $h tail $t"
 
-echo "Head won $h times."
-echo "Tail won $t times."
+   echo "Tail won by $diff score."
+else
+   echo "It's a Tie by scoring $h-$t by each."
+fi
 
